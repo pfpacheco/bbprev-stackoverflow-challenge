@@ -60,7 +60,8 @@ export class QuestionsComponent implements OnInit {
       this.searchService.searchQuestions(search).subscribe((questions: Question[]) => {
         this.questions = questions;
         if (this.questions.length > 0) {
-            this.formGroup.controls.q_array = this.questions;
+          for (const question of this.questions) {
+
           }
         }
       });
