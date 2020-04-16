@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+
+  bbprev-stackoverflow-app:
+    container_name: 'bbprev-stackoverflow-app'
+    build: './bbprev-stackoverflow-app'
+    command: 'python -m flask run --host=0.0.0.0 --port=5000'
+    ports:
+      - '5000:5000'
+
+  nginx:
+    container_name: 'nginx'
+    build: './docks'
+    ports:
+      - '8000:80'
+    depends_on:
+      - bbprev-stackoverflow-app
