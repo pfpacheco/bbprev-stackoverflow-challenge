@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.5'
 
 services:
 
@@ -8,6 +8,13 @@ services:
     command: 'python -m flask run --host=0.0.0.0 --port=5000'
     ports:
       - '5000:5000'
+
+  bbprev-stackoverflow-web:
+    container_name: 'bbprev-stackoverflow-web'
+    build: './bbprev-stackoverflow-web'
+    command: 'ng serve pysysweb --prod=false --host 0.0.0.0 --disable-host-check'     
+    ports:
+      - '4200:4200'
 
   nginx:
     container_name: 'nginx'

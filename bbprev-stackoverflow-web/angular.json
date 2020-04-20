@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bbprev-stackoverflow-web"
+    }
+  },
+  "defaultProject": "bbprev-stackoverflow-web",
+  "cli": {
+    "analytics": false
+  }
 }

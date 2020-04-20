@@ -27,10 +27,10 @@ export class SearchService {
     )
   }
 
-  public searchQuestions(search: Search): Observable<Question[]> {
+  public searchQuestions(search: Search): Observable<any[]> {
     const url = this.baseUrl + '/questions'
     return this.httpClient
-      .post<Question[]>(url, JSON.stringify(search), this.httpOptions)
+      .post<Question[]>(url, search, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));

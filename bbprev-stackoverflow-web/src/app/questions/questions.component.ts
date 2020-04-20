@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import {Search} from "./search/search";
 import {SearchService} from "./search/search.service";
@@ -14,7 +14,6 @@ export class QuestionsComponent implements OnInit {
 
   formGroup: FormGroup;
   questions: Question[];
-  items: FormArray;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,15 +27,8 @@ export class QuestionsComponent implements OnInit {
         fsearch: ['', [
           Validators.required,
           Validators.pattern('^[_A-z0-9-?]*((-|\\s)*[_A-z0-9-?])*$')
-        ]],
-        items:['', [this.formBuilder.array([this.createItem()])]]
+        ]]
       });
-  }
-
-  createItem(): FormGroup {
-    return this.formBuilder.group({
-
-    });
   }
 
   validate() {
@@ -57,13 +49,10 @@ export class QuestionsComponent implements OnInit {
         search: this.formGroup.controls.fsearch.value
       }
 
-      this.searchService.searchQuestions(search).subscribe((questions: Question[]) => {
-        this.questions = questions;
-        if (this.questions.length > 0) {
-          for (const question of this.questions) {
+      console.log("search: " + search.search);
 
-          }
-        }
+      this.searchService.searchQuestions(search).subscribe((questions:Question[]) => {
+        console.log("questions: " + questions)
       });
     }
   }
